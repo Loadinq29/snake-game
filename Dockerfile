@@ -1,6 +1,6 @@
 FROM mhart/apline-node
 
-COPY ./app
+COPY . /app
 
 CMD node /app/app.js
 
