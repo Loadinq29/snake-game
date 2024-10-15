@@ -1,5 +1,7 @@
-FROM node:7.7.2-alpine
-WORKDIR /usr/app
-COPY package.json .
-RUN npm install --quiet
-COPY . .
+FROM mhart/apline-node
+
+COPY ./app
+
+CMD node /app/app.js
+
+EXPOSE 3000
