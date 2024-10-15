@@ -1,8 +1,17 @@
-version: '2.4'
+version: '3'
+
 services:
-  apache:
-    image: 'loadinq/snakegame_docker_repo'
+  app:
+    build: .
     ports:
-    - '80:80'
+      - "3000:3000"  # Expose the app on port 3000
     volumes:
-    - ./:/usr/local/apache2/htdocs
+      - .:/app       # Mount current directory to /app in container for live updates (optional)
+    environment:
+      - NODE_ENV=development  # Set the environment variable, e.g., development or production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
