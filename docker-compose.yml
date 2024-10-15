@@ -1,17 +1,19 @@
-version: '3'
-
+version: '2'
 services:
-  app:
+  web:
     build: .
-    ports:
-      - "3000:3000"  # Expose the app on port 3000
+    command: npm run dev
     volumes:
-      - .:/app       # Mount current directory to /app in container for live updates (optional)
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
     environment:
-      - NODE_ENV=development  # Set the environment variable, e.g., development or production
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      DATABASE_URL: postgres://todoapp@postgres/todos
+  postgres:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: todoapp
+      POSTGRES_DB: todos
