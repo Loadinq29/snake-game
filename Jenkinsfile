@@ -12,7 +12,7 @@ stage('Build-and-Tag')
 {
     /* This builds the actual image;
         * This is synonomous to docker build on the command line */
-    app = docker.build('loadinq/car_docker_repo')    
+    app = docker.build('loadinq/snakegame_docker_repo')    
 }
 
 stage('Push-to-Dockerhub')
