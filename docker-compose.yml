@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   snake:
-    image: 'loadinq/snake'
+    image: 'loadinq/snakegame_docker_repo'
     environment:
       - "PORT:3000"
     ports: 
