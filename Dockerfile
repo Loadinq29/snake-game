@@ -1,4 +1,4 @@
-FROM mhart/apline-node
+FROM mhart/apline-node:latest
 
 COPY . /app
 
